@@ -12,11 +12,15 @@ icon = pygame.image.load('img/5440828098166778250.jpg')
 pygame.display.set_icon(icon)
 
 target_img = pygame.image.load("img/peter_targ.png")
+target_img2 = pygame.image.load("img/loose.png")
 target_width = 50
 target_height = 50
 
 target_x = random.randint(0,SCREEN_WIDTH-target_width)
 target_y = random.randint(0,SCREEN_HEIGHT-target_height)
+
+target_x2 = random.randint(0,SCREEN_WIDTH-target_width)
+target_y2 = random.randint(0,SCREEN_HEIGHT-target_height)
 
 color = (255,255,255)
 
@@ -32,7 +36,12 @@ while running:
             if target_x < mouse_x < target_x + target_width and target_y < mouse_y < target_y + target_height:
                 target_x = random.randint(0, SCREEN_WIDTH - target_width)
                 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
+                target_x2 = random.randint(0, SCREEN_WIDTH - target_width)
+                target_y2 = random.randint(0, SCREEN_HEIGHT - target_height)
+            if target_x2 < mouse_x < target_x2 + target_width and target_y2 < mouse_y < target_y2 + target_height:
+                running = False
 
+    screen.blit(target_img2, (target_x2, target_y2))
     screen.blit(target_img, (target_x, target_y))
     pygame.display.update()
 
